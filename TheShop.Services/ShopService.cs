@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TheShop.Services;
 
 namespace TheShop
 {
 	public class ShopService
 	{
 		private DatabaseDriver DatabaseDriver;
-		private Logger logger;
+		private readonly ILogger logger;
 
 		private Supplier1 Supplier1;
 		private Supplier2 Supplier2;
 		private Supplier3 Supplier3;
-		
-		public ShopService()
+        
+
+        public ShopService(ILogger logger)
 		{
 			DatabaseDriver = new DatabaseDriver();
-			logger = new Logger();
+			//logger = new Logger();
 			Supplier1 = new Supplier1();
 			Supplier2 = new Supplier2();
 			Supplier3 = new Supplier3();
-		}
+            this.logger = logger;
+        }
 
 		public void OrderAndSellArticle(int id, int maxExpectedPrice, int buyerId)
 		{

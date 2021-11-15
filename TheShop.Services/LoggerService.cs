@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheShop.Services
 {
-    class LoggerService : ILogger
+    public class LoggerService : ILogger
     {
         public void Debug(string message)
         {
