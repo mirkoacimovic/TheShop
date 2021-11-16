@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TheShop.Core.Entities;
 using TheShop.Services;
 
 namespace TheShop
@@ -35,19 +36,19 @@ namespace TheShop
 			if (articleExists)
 			{
 				tempArticle = Supplier1.GetArticle(id);
-				if (maxExpectedPrice < tempArticle.ArticlePrice)
+				if (maxExpectedPrice < tempArticle.Price)
 				{
 					articleExists = Supplier2.ArticleInInventory(id);
 					if (articleExists)
 					{
 						tempArticle = Supplier2.GetArticle(id);
-						if (maxExpectedPrice < tempArticle.ArticlePrice)
+						if (maxExpectedPrice < tempArticle.Price)
 						{
 							articleExists = Supplier3.ArticleInInventory(id);
 							if (articleExists)
 							{
 								tempArticle = Supplier3.GetArticle(id);
-								if (maxExpectedPrice < tempArticle.ArticlePrice)
+								if (maxExpectedPrice < tempArticle.Price)
 								{
 									article = tempArticle;
 								}
@@ -69,9 +70,9 @@ namespace TheShop
 
 			logger.Debug("Trying to sell article with id=" + id);
 
-			article.IsSold = true;
-			article.SoldDate = DateTime.Now;
-			article.BuyerUserId = buyerId;
+			//article.IsSold = true;
+			//article.SoldDate = DateTime.Now;
+			//article.BuyerUserId = buyerId;
 			
 			try
 			{
@@ -103,7 +104,7 @@ namespace TheShop
 
 		public Article GetById(int id)
 		{
-            return _articles.Single(x => x.ID == id);
+            return _articles.Single(x => x.Id == id);
 		}
 
 		public void Save(Article article)
@@ -123,9 +124,9 @@ namespace TheShop
 		{
 			return new Article()
 			{
-				ID = 1,
-				Name_of_article = "Article from supplier1",
-				ArticlePrice = 458
+				Id = 1,
+				Name = "Article from supplier1",
+				Price = 458
 			};
 		}
 	}
@@ -141,9 +142,9 @@ namespace TheShop
 		{
 			return new Article()
 			{
-				ID = 1,
-				Name_of_article = "Article from supplier2",
-				ArticlePrice = 459
+				Id = 1,
+				Name = "Article from supplier2",
+				Price = 459
 			};
 		}
 	}
@@ -159,24 +160,12 @@ namespace TheShop
 		{
 			return new Article()
 			{
-				ID = 1,
-				Name_of_article = "Article from supplier3",
-				ArticlePrice = 460
+				Id = 1,
+				Name = "Article from supplier3",
+				Price = 460
 			};
 		}
 	}
 
-	public class Article
-	{
-		public int ID { get; set; }
-
-		public string Name_of_article { get; set; }
-
-		public int ArticlePrice { get; set; }
-		public bool IsSold { get; set; }
-
-		public DateTime SoldDate { get; set; }
-		public int BuyerUserId { get; set; }
-	}
 
 }

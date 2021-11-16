@@ -36,6 +36,7 @@
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\TheShop.Core\TheShop.Core.csproj">
       <Project>{36d62d40-f6bc-4c3e-a01f-df49a9aed4f9}</Project>
       <Name>TheShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheShop.DAL\TheShop.DAL.csproj">
+      <Project>{b716c06c-9742-49f6-ae9d-78c21ac5a3ba}</Project>
+      <Name>TheShop.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\TheShop.Services\TheShop.Services.csproj">
       <Project>{0731d9c5-9633-4058-b48d-c4ce18a07f46}</Project>

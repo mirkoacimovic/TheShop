@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheShop.Core.Entities;
+using TheShop.Services;
+using TheShop.Services.Interfaces;
 
 namespace TheShop
 {
     public class Application
     {
-        public Application()
+        private readonly ISupplierService supplierService;
+
+        public Application(ISupplierService supplierService)
         {
-			// TODO: Inject all services needed
+            this.supplierService = supplierService;
+            // TODO: Inject all services needed
         }
 
         public void Run(string[] args)
         {
+			Console.WriteLine("Started...");
+
+			supplierService.CheckInventory(null);
+          
+			Console.ReadLine();
+
 			//var shopService = new ShopService();
 
 			//try
